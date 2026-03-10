@@ -53,7 +53,7 @@ export default function ChatPage() {
     setChatHistory((prev) => prev.filter((chat) => chat.id !== id))
   }
 
-  async const handleSendMessage = async (content: string) => {
+  const handleSendMessage = async (content: string) => {
     const userMessage: Message = {
       id: String(Date.now()),
       role: "user",

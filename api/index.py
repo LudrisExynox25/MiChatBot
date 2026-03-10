@@ -9,7 +9,8 @@ app = FastAPI()
 # Esto permite que tu Frontend (v0) se comunique con el Backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Luego lo cambiaremos por tu URL de GitHub Pages
+    allow_origins=["*"], # Permite que tu web se conecte
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
