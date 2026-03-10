@@ -53,7 +53,7 @@ export default function ChatPage() {
     setChatHistory((prev) => prev.filter((chat) => chat.id !== id))
   }
 
-  const handleSendMessage = async (content: string) => {
+  async const handleSendMessage = async (content: string) => {
     const userMessage: Message = {
       id: String(Date.now()),
       role: "user",
@@ -63,16 +63,23 @@ export default function ChatPage() {
     setMessages((prev) => [...prev, userMessage])
     setIsLoading(true)
 
-    // Simulate AI response
-    setTimeout(() => {
+   // Enviar mensaje al backend de Groq
+    try {
+      const aiResponseContent = await getGroqResponse(content);
+      
       const assistantMessage: Message = {
         id: String(Date.now() + 1),
         role: "assistant",
-        content: getSimulatedResponse(content),
+        content: aiResponseContent,
         timestamp: new Date(),
       }
+
       setMessages((prev) => [...prev, assistantMessage])
+    } catch (error) {
+      console.error("Error al obtener respuesta:", error);
+    } finally {
       setIsLoading(false)
+    }
 
       // Update chat title based on first message
       setChatHistory((prev) =>
@@ -134,13 +141,24 @@ export default function ChatPage() {
   )
 }
 
-function getSimulatedResponse(userMessage: string): string {
-  const responses = [
-    "That's a great question! Let me help you with that. Based on my understanding, here's what I think...",
-    "I'd be happy to assist with that. Here are some thoughts and suggestions that might help you move forward.",
-    "Interesting! Let me break this down for you. There are several approaches you could consider.",
-    "Thanks for asking! This is a common topic. Here's a comprehensive overview of what you need to know.",
-    "Great topic! I'll provide you with a detailed explanation and some practical examples.",
-  ]
-  return responses[Math.floor(Math.random() * responses.length)]
+async function getGroqResponse(userMessage: string): Promise<string> {
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message: userMessage }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Error en la conexión con el servidor');
+    }
+
+    const data = await response.json();
+    return data.response; // Asegúrate de que tu Python devuelva {"response": "..."}
+  } catch (error) {
+    console.error("Error:", error);
+    return "Lo siento, compadre, hubo un problema al conectar con el cerebro del chat.";
+  }
 }
