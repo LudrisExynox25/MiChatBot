@@ -60,12 +60,12 @@ export default function ChatPage() {
       content,
       timestamp: new Date(),
     }
+
     setMessages((prev) => [...prev, userMessage])
     setIsLoading(true)
 
-   // Enviar mensaje al backend de Groq
     try {
-      const aiResponseContent = await getGroqResponse(content);
+      const aiResponseContent = await getGroqResponse(content)
       
       const assistantMessage: Message = {
         id: String(Date.now() + 1),
@@ -76,10 +76,32 @@ export default function ChatPage() {
 
       setMessages((prev) => [...prev, assistantMessage])
     } catch (error) {
-      console.error("Error al obtener respuesta:", error);
+      console.error("Error:", error)
     } finally {
       setIsLoading(false)
     }
+  }
+
+  const handleStop = () => {
+    setIsLoading(false)
+  }
+
+  // Asegúrate de que esta función esté FUERA de ChatPage o al final
+  async function getGroqResponse(userMessage: string): Promise<string> {
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMessage }),
+      })
+
+      if (!response.ok) throw new Error('Error en el servidor')
+      const data = await response.json()
+      return data.response
+    } catch (error) {
+      return "Lo siento, hubo un problema con la conexión."
+    }
+  }
 
       // Update chat title based on first message
       setChatHistory((prev) =>
@@ -90,7 +112,7 @@ export default function ChatPage() {
         )
       )
     }
-  }
+
 
   const handleStop = () => {
     setIsLoading(false)
@@ -139,7 +161,7 @@ export default function ChatPage() {
       </main>
     </div>
   )
-}
+
 
 async function getGroqResponse(userMessage: string): Promise<string> {
   try {
