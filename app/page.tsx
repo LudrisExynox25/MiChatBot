@@ -70,7 +70,7 @@ export default function ChatPage() {
 // Esta función debe ir fuera de ChatPage para que no haya errores de llaves
 async function getGroqResponse(userMessage: string): Promise<string> {
   try {
-    const response = await fetch('/api/chat', {
+    const response = await fetch('/api/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
