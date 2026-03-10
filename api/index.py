@@ -22,7 +22,7 @@ client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 class ChatRequest(BaseModel):
     message: str
 
-@app.post("/chat")
+@app.post("/api/chat")
 async def chat_endpoint(request: ChatRequest):
     try:
         completion = client.chat.completions.create(
