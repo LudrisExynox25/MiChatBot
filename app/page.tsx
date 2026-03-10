@@ -89,7 +89,7 @@ export default function ChatPage() {
             : chat
         )
       )
-    }, 1000)
+    }
   }
 
   const handleStop = () => {
