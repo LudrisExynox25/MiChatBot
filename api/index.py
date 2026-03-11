@@ -1,4 +1,5 @@
 import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -12,7 +13,8 @@ from langchain_community.vectorstores import FAISS
 
 print("Base de datos de vectores creada exitosamente.")
 
-loader = PyPDFLoader("api/conceptosAlimentacion.pdf")
+# Cambia esto en index.py
+loader = PyPDFLoader("conceptosAlimentacion.pdf")
 documentos = loader.load()
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
 trozos = text_splitter.split_documents(documentos)
