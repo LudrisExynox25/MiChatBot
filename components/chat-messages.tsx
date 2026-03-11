@@ -108,7 +108,8 @@ function EmptyState() {
           Como te puedo ayudar hoy?
         </h3>
         <p className="text-sm text-muted-foreground">
-          Inicia una conversación escribiendo un mensaje abajo. Estoy aquí para asistirte con cualquier pregunta o tarea.
+          ¡Hola! Soy tu Asistente de Nutrición. 
+  Pregúntame sobre dietas, alimentos o revisa la información de mi guía.
         </p>
       </div>
       <div className="mt-4 grid gap-2 sm:grid-cols-2">
@@ -130,19 +131,19 @@ function EmptyState() {
 
 const suggestions = [
   {
-    title: "Explica un concepto",
+    title: "Explica qué es un macronutriente",
     description: "Ayudame a entender algo complejo.",
   },
   {
-    title: "Escribe algun codigo",
+    title: "Dame ideas para una cena saludable",
     description: "Generar código para una tarea específica",
   },
   {
-    title: "Lluvia de ideas",
+    title: "Ayúdame a calcular mis requerimientos",
     description: "Ayúdame a resolver un problema paso a paso",
   },
   {
-    title: "Revisa mi trabajo",
+    title: "Revisa mi plan de alimentación semanal",
     description: "Dame sugerencias sobre mi contenido",
   },
 ]
