@@ -6,11 +6,12 @@ import { ChatMessages } from "@/components/chat-messages"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
 interface Message {
-  id: string
-  role: "user" | "assistant"
-  content: string
-  timestamp: Date
+  id?: string;
+  role: 'user' | 'assistant';
+  content: string;
+  timestamp: Date;
 }
+
 
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([])
@@ -24,7 +25,7 @@ export default function ChatPage() {
       timestamp: new Date(),
     }
 
-    setMessages((prev) => [...prev, userMessage])
+    setMessages((prev) => [...prev, userMessage]);
     setIsLoading(true)
 
     try {
@@ -70,7 +71,7 @@ export default function ChatPage() {
 // Esta función debe ir fuera de ChatPage para que no haya errores de llaves
 async function getGroqResponse(userMessage: string): Promise<string> {
   try {
-    const response = await fetch('/api/', {
+    const response = await fetch('/api/chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
