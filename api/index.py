@@ -21,6 +21,8 @@ trozos = text_splitter.split_documents(documentos)
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 vector_db = FAISS.from_documents(trozos, embeddings)
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
 
 # Esto permite que tu Frontend (v0) se comunique con el Backend
