@@ -41,8 +41,8 @@ client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 class ChatRequest(BaseModel):
     message: str
 
-@app.post("/api/chat")
-async def chat_endpoint(request: ChatRequest):
+@app.post("/api")
+async def chat(request: ChatRequest):
     try:
        # AQUI CONECTAMOS EL PASO 2 CON EL CHAT
         # Buscamos en el PDF los 3 fragmentos más parecidos a la pregunta
