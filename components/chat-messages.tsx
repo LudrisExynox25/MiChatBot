@@ -105,11 +105,10 @@ function EmptyState() {
       </div>
       <div className="max-w-sm space-y-2">
         <h3 className="text-lg font-semibold text-foreground">
-          How can I help you today?
+          Como te puedo ayudar hoy?
         </h3>
         <p className="text-sm text-muted-foreground">
-          Start a conversation by typing a message below. I'm here to assist you
-          with any questions or tasks.
+          Inicia una conversación escribiendo un mensaje abajo. Estoy aquí para asistirte con cualquier pregunta o tarea.
         </p>
       </div>
       <div className="mt-4 grid gap-2 sm:grid-cols-2">
@@ -131,19 +130,19 @@ function EmptyState() {
 
 const suggestions = [
   {
-    title: "Explain a concept",
-    description: "Help me understand something complex",
+    title: "Explica un concepto",
+    description: "Ayudame a entender algo complejo.",
   },
   {
-    title: "Write some code",
-    description: "Generate code for a specific task",
+    title: "Escribe algun codigo",
+    description: "Generar código para una tarea específica",
   },
   {
-    title: "Brainstorm ideas",
-    description: "Help me think through a problem",
+    title: "Lluvia de ideas",
+    description: "Ayúdame a resolver un problema paso a paso",
   },
   {
-    title: "Review my work",
-    description: "Get feedback on my content",
+    title: "Revisa mi trabajo",
+    description: "Dame sugerencias sobre mi contenido",
   },
 ]

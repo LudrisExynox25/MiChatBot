@@ -57,7 +57,7 @@ export function ChatInput({ onSend, isLoading, onStop }: ChatInputProps) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Message..."
+            placeholder="Escribe lo que sea..."
             rows={1}
             className="max-h-[200px] min-h-[44px] flex-1 resize-none bg-transparent px-2 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
           />
@@ -103,7 +103,7 @@ export function ChatInput({ onSend, isLoading, onStop }: ChatInputProps) {
           </div>
         </div>
         <p className="mt-2 text-center text-xs text-muted-foreground">
-          AI can make mistakes. Consider checking important information.
+          La IA puede cometer errores. Considera verificar la información importante.
         </p>
       </div>
     </div>
