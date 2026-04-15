@@ -71,7 +71,7 @@ export default function ChatPage() {
 // Esta función debe ir fuera de ChatPage para que no haya errores de llaves
 async function getGroqResponse(userMessage: string): Promise<string> {
   try {
-   const response = await fetch('http://127.0.0.1:8000/api/chat', {
+   const response = await fetch('https://chat-bot-ia-one.vercel.app/api/chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
