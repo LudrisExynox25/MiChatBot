@@ -28,7 +28,7 @@ app = FastAPI()
 # Esto permite que tu Frontend (v0) se comunique con el Backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Permite que tu web se conecte
+    allow_origins=["https://mi-chat-bot.vercel.app"], # Permite que tu web se conecte
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
