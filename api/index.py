@@ -25,10 +25,14 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+origins = [
+    "https://mi-chat-bot.vercel.app"  # Tu URL de producción
+]
+
 # Esto permite que tu Frontend (v0) se comunique con el Backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://mi-chat-bot.vercel.app"], # Permite que tu web se conecte
+    allow_origins=origins, # Permite que tu web se conecte
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
